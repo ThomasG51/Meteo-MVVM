@@ -19,7 +19,7 @@ struct ContentView: View {
     
     // MARK: - STATE / BINDING
     
-    @State private var newCity: String = ""
+    @State private var newCity = ""
     
     // MARK: - INIT
     

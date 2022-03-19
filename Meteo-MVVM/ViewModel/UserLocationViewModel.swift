@@ -13,15 +13,15 @@ class UserLocationViewModel: NSObject, ObservableObject  {
     
     // MARK: - PROPERTIES
 
-    private let manager: CLLocationManager = CLLocationManager()
-    private let geocoder: CLGeocoder = CLGeocoder()
+    private let manager = CLLocationManager()
+    private let geocoder = CLGeocoder()
     
     var authorizationStatus: CLAuthorizationStatus?
     
     // MARK: - DATA BINDING
     
     @Published var userLocation: UserLocation?
-    @Published var isLocatingMe: Bool = true
+    @Published var isLocatingMe = true
     
     // MARK: - INIT
     
@@ -66,13 +66,12 @@ class UserLocationViewModel: NSObject, ObservableObject  {
         let latitude = coordinates?.latitude ?? 0
         let longitude = coordinates?.longitude ?? 0
         
-        let newUserLocation = UserLocation(latitude: latitude, longitude: longitude, city: city, country: country)
-        self.userLocation = newUserLocation
+        self.userLocation = UserLocation(latitude: latitude, longitude: longitude, city: city, country: country)
     }
     
     func setRegion(userLocation: UserLocation) -> MKCoordinateRegion {
-        let center: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude)
-        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        let center = CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         return MKCoordinateRegion(center: center, span: span)
     }
 }
