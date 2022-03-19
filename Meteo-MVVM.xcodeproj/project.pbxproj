@@ -11,6 +11,9 @@
 		7E9134F627E5EF4700D9D440 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9134F527E5EF4700D9D440 /* ContentView.swift */; };
 		7E9134F827E5EF4700D9D440 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9134F727E5EF4700D9D440 /* Assets.xcassets */; };
 		7E9134FB27E5EF4700D9D440 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9134FA27E5EF4700D9D440 /* Preview Assets.xcassets */; };
+		7E91350627E6117100D9D440 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91350527E6117100D9D440 /* UserLocation.swift */; };
+		7E91350827E611C600D9D440 /* UserLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91350727E611C600D9D440 /* UserLocationViewModel.swift */; };
+		7E91350C27E61DD100D9D440 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91350B27E61DD100D9D440 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		7E9134F527E5EF4700D9D440 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E9134F727E5EF4700D9D440 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9134FA27E5EF4700D9D440 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7E91350527E6117100D9D440 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		7E91350727E611C600D9D440 /* UserLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationViewModel.swift; sourceTree = "<group>"; };
+		7E91350927E6164000D9D440 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7E91350B27E61DD100D9D440 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,11 +58,13 @@
 		7E9134F227E5EF4700D9D440 /* Meteo-MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				7E91350927E6164000D9D440 /* Info.plist */,
 				7E9134F327E5EF4700D9D440 /* Meteo_MVVMApp.swift */,
 				7E9134F727E5EF4700D9D440 /* Assets.xcassets */,
 				7E91350327E5EF6300D9D440 /* Model */,
 				7E91350227E5EF5D00D9D440 /* View */,
 				7E91350127E5EF5500D9D440 /* ViewModel */,
+				7E91350427E6111500D9D440 /* Data */,
 				7E9134F927E5EF4700D9D440 /* Preview Content */,
 			);
 			path = "Meteo-MVVM";
@@ -72,6 +81,7 @@
 		7E91350127E5EF5500D9D440 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7E91350727E611C600D9D440 /* UserLocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -79,6 +89,7 @@
 		7E91350227E5EF5D00D9D440 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E91350A27E61DB700D9D440 /* Component */,
 				7E9134F527E5EF4700D9D440 /* ContentView.swift */,
 			);
 			path = View;
@@ -87,8 +98,24 @@
 		7E91350327E5EF6300D9D440 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E91350527E6117100D9D440 /* UserLocation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7E91350427E6111500D9D440 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7E91350A27E61DB700D9D440 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				7E91350B27E61DD100D9D440 /* MapView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E91350627E6117100D9D440 /* UserLocation.swift in Sources */,
 				7E9134F627E5EF4700D9D440 /* ContentView.swift in Sources */,
+				7E91350C27E61DD100D9D440 /* MapView.swift in Sources */,
+				7E91350827E611C600D9D440 /* UserLocationViewModel.swift in Sources */,
 				7E9134F427E5EF4700D9D440 /* Meteo_MVVMApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +324,9 @@
 				DEVELOPMENT_TEAM = 5U782822RV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Meteo-MVVM/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show position";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,6 +356,9 @@
 				DEVELOPMENT_TEAM = 5U782822RV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Meteo-MVVM/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show position";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
