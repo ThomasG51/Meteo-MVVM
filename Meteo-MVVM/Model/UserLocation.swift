@@ -8,10 +8,8 @@
 import Foundation
 
 struct UserLocation {
-    
     var latitude: Double
     var longitude: Double
     var city: String
     var country: String
-    
 }

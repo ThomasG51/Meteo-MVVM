@@ -1,0 +1,37 @@
+//
+//  WeatherResponse.swift
+//  Meteo-MVVM
+//
+//  Created by Thomas George on 19/03/2022.
+//
+
+import Foundation
+
+// MARK: - WEATHER RESPONSE
+
+struct WeatherResponse: Decodable {
+    var list: [Forecast]
+}
+
+// MARK: - FORECAST
+
+struct Forecast: Decodable {
+    var dt: Double
+    var main: Main
+    var weather: [Weather]
+}
+
+// MARK: - MAIN
+
+struct Main: Decodable {
+    var temp: Double
+    var temp_min: Double
+    var temp_max: Double
+}
+
+// MARK: - WEATHER
+struct Weather: Decodable {
+    var main: String
+    var description: String
+    var icon: String
+}
