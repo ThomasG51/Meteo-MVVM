@@ -15,7 +15,8 @@ struct ContentView: View {
     
     // MARK: - VIEW MODELS
     
-    @ObservedObject var viewModel: UserLocationViewModel
+    @ObservedObject var userLocationViewModel: UserLocationViewModel
+    @ObservedObject var weatherListViewModel: WeatherListViewModel
     
     // MARK: - STATE / BINDING
     
@@ -24,40 +25,58 @@ struct ContentView: View {
     // MARK: - INIT
     
     init() {
-        self.viewModel = UserLocationViewModel()
+        self.userLocationViewModel = UserLocationViewModel()
+        self.weatherListViewModel = WeatherListViewModel()
     }
     
     // MARK: - VIEW BODY
     
     var body: some View {
-        if let userLocation = self.viewModel.userLocation {
+        if let userLocation = self.userLocationViewModel.userLocation {
             GeometryReader { geo in
                 NavigationView {
                     List {
-                        MapView(region: .constant(self.viewModel.setRegion(userLocation: userLocation)))
+                        MapView(region: .constant(self.userLocationViewModel.setRegion(userLocation: userLocation)))
                             .frame(width: geo.size.width / 3, height: geo.size.width / 3)
                             .cornerRadius(10)
                         
                         HStack {
-                            TextField("Add new city", text: self.$newCity)
+                            TextField("Choisir une ville", text: self.$newCity)
                             
                             Button(action: {
-                                self.viewModel.convertAddress(address: self.newCity)
+                                self.userLocationViewModel.convertAddress(address: self.newCity)
                             }, label: {
                                 Image(systemName: "mappin.circle")
                             })
+                        }
+                        
+                        Section(header: Text("Prévisions")) {
+                            ForEach (self.weatherListViewModel.weatherList) { viewModel in
+                                WeatherRowView(weatherViewModel: viewModel)
+                            }
                         }
                     }
                     .navigationTitle(userLocation.city)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
-                                self.viewModel.toggleLocation()
+                                self.userLocationViewModel.toggleLocation()
+                                self.newCity = ""
                             }, label: {
-                                Image(systemName: self.viewModel.isLocatingMe ? "location.fill" : "location.slash.fill")
+                                Image(systemName: self.userLocationViewModel.isLocatingMe ? "location.fill" : "location.slash.fill")
                             })
                         }
                     }
+                }
+                .onAppear() {
+                    if let userLocation = self.userLocationViewModel.userLocation {
+                        self.weatherListViewModel.requestForecast(userLocation: userLocation)
+                    }
+                }
+            }
+            .onChange(of: self.userLocationViewModel.userLocation?.city) { value in
+                if let userLocation = self.userLocationViewModel.userLocation {
+                    self.weatherListViewModel.requestForecast(userLocation: userLocation)
                 }
             }
         } else {

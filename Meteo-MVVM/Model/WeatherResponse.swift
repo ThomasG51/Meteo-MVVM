@@ -16,22 +16,27 @@ struct WeatherResponse: Decodable {
 // MARK: - FORECAST
 
 struct Forecast: Decodable {
+    
     var dt: Double
+    
+    // MARK: - MAIN
+    
     var main: Main
+    
+    struct Main: Decodable {
+        var temp: Double
+        var temp_min: Double
+        var temp_max: Double
+    }
+    
+    // MARK: - WEATHER
+    
     var weather: [Weather]
-}
-
-// MARK: - MAIN
-
-struct Main: Decodable {
-    var temp: Double
-    var temp_min: Double
-    var temp_max: Double
-}
-
-// MARK: - WEATHER
-struct Weather: Decodable {
-    var main: String
-    var description: String
-    var icon: String
+    
+    struct Weather: Decodable {
+        var main: String
+        var description: String
+        var icon: String
+    }
+    
 }
