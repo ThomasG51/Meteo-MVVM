@@ -37,7 +37,7 @@ struct ContentView: View {
                 NavigationView {
                     List {
                         MapView(region: .constant(self.userLocationViewModel.setRegion(userLocation: userLocation)))
-                            .frame(width: geo.size.width / 3, height: geo.size.width / 3)
+                            .frame(height: geo.size.width / 2)
                             .cornerRadius(10)
                         
                         HStack {

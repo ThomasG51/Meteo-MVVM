@@ -10,18 +10,10 @@ import MapKit
 
 struct MapView: View {
     
-    // MARK: - PROPERTIES
-    
-    
-    
     // MARK: - STATE / BINDING
 
     @Binding var region: MKCoordinateRegion
-    
-    // MARK: - INIT
-    
-    
-    
+
     // MARK: - VIEW BODY
     
     var body: some View {
